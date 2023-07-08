@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pickle
+from .models import User
 
 
 # Create your views here.
@@ -30,6 +31,56 @@ def predictions(request):
 def diabetes(request):
     return render(request,"myapp/diabetes.html")
 
+def register(request):
+    if request.method=="POST":
+        print("I'm coming from register_form")
+        age = int(request.POST.get('age'))
+        gender = request.POST.get('gender')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        a = User(age=age, gender=gender, name=name, email=email, password=password)
+        a.save()
+    return render(request,"myapp/registration_form copy.html")
+
+def login(request):
+    error_message = None
+    
+    if request.method=="POST":
+        print("I'm coming from login_form")
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        list_users=User.objects.filter(email=email)
+
+        # In case where the email is not present in the DB, list_users would be empty and list_users.first() 
+        # and in that case user below would be None
+
+        user=list_users.first()
+        # print(user)
+        # print(user.email)
+        # print(user.password)
+        # print(user.name)
+        # print(user.age)
+        # print(user.gender)
+        if user is not None:
+            if password==user.password:
+                return render(request, "myapp/login_success.html",)
+            else:
+                error_message = "Invalid Password!"
+        else:
+            error_message = "User does not exist"
+
+        error = {
+            "error_message":error_message
+        }
+
+    print(error_message)
+
+    return render(request,"myapp/login_form.html", error)
+
+
+
 def submit_form(request):
     # symptoms = request.POST.get('symptoms')
     # gender = request.POST.get('gender')
@@ -38,12 +89,6 @@ def submit_form(request):
     # petalwidth = request.POST.get('petalwidth')
     # sepallength = request.POST.get('sepallength')
     # sepalwidth = request.POST.get('sepalwidth')
-    a = request.POST.get('Age')
-    print(a)
-    print(type(a))
-    print(int(a))
-    while True:
-        pass
     Age = int(request.POST.get('Age'))
     Pregnancies = int(request.POST.get('Pregnancies'))
     Glucose = int(request.POST.get('Glucose'))

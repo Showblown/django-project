@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <nav>
         <div class="navbar">
@@ -15,13 +17,13 @@
                 <ul>
                     <li>
 
-                        <a href = "/"> Home </a>
+                        <a href="/"> Home </a>
 
                     </li>
 
                     <li>
 
-                        <a href = "/about-us"> About us </a>
+                        <a href="/about-us"> About us </a>
 
                     </li>
 
@@ -29,9 +31,29 @@
             </div>
         </div>
     </nav>
-    <fooper>
+
+
+    <div>
+        {% if request.session.user_id %}
+        <ul>
+            <li><a href="#">{{name}} </a> </li>
+            <li><a href="/logout"> Logout </a> </li>
+            {% else %}
+            <Li> <a href="/login"> Login </a> </li>
+            </li> <a href="/register"> Register </a> </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
         <p>www.xyz.com All rights reserved</p>
         <p><a href="tnc">Terms and Conditions</a></p>
-    </fooper>
+    </footer>
 </body>
+
 </html>

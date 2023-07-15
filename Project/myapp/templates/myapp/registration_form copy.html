@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'myapp/base.html' %}
+
+{% block content %}
     <form method="post" action="{% url 'register' %}" style="max-width: 400px; margin: 0 auto; padding: 20px; background-color: #b3b3b3;">
         {% csrf_token %}
         <div style="margin-bottom: 20px;">
@@ -35,5 +30,4 @@
     
         <input type="submit" value="Register" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; border-radius: 4px; cursor: pointer; background-color: #337ab7; color: #fff; border: none; width: 50%; right: 50px">
     </form>
-</body>
-</html>
+{% endblock %}

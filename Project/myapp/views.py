@@ -41,7 +41,13 @@ def register(request):
         password = request.POST.get('password')
         a = User(age=age, gender=gender, name=name, email=email, password=password)
         a.save()
-    return render(request,"myapp/registration_form copy.html")
+
+    print("Logged in user ID is ")
+    print(request.session['user_id'])
+    logged_in_user = User.objects.get(id=request.session['user_id'])
+
+    return render(request,"myapp/registration_form copy.html", {
+        "name":logged_in_user.name    })
 
 def login(request):
     error_message = None
@@ -65,21 +71,24 @@ def login(request):
         # print(user.gender)
         if user is not None:
             if password==user.password:
+                request.session["user_id"]=user.id
                 return render(request, "myapp/login_success.html",)
             else:
                 error_message = "Invalid Password!"
         else:
             error_message = "User does not exist"
 
-        error = {
-            "error_message":error_message
-        }
+    error = {
+        "error_message":error_message
+    }
 
     print(error_message)
 
     return render(request,"myapp/login_form.html", error)
 
-
+def logout(request):
+    del request.session["user_id"]
+    return render(request,"myapp/login_form.html")
 
 def submit_form(request):
     # symptoms = request.POST.get('symptoms')
@@ -169,4 +178,4 @@ def demo(request):
 
     return render(request,"myapp/demo.html", data)
 
-#https://github.com/Showblown/django-projec
+#https://github.com/Showblown/django-project

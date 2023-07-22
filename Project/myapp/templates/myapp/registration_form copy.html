@@ -1,33 +1,43 @@
 {% extends 'myapp/base.html' %}
 
 {% block content %}
-    <form method="post" action="{% url 'register' %}" style="max-width: 400px; margin: 0 auto; padding: 20px; background-color: #b3b3b3;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="registration_form copy.css">
+</head>
+<body>
+    <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
-        <div style="margin-bottom: 20px;">
-            <label for="age" style="display: block; font-weight: bold; margin-bottom: 5px;">Age:</label>
-            <input type="text" id="age" name="age" style="width: 90%; padding: 10px; font-size: 16px; border-radius: 15px">
+        <div>
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age">
         </div>
     
-        <div style="margin-bottom: 20px;">
-            <label for="gender" style="display: block; font-weight: bold; margin-bottom: 5px;">Gender:</label>
-            <input type="text" id="gender" name="gender" style="width: 90%; padding: 10px; font-size: 16px; border-radius: 15px">
+        <div>
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender">
         </div>
     
-        <div style="margin-bottom: 20px;">
-            <label for="name" style="display: block; font-weight: bold; margin-bottom: 5px;">Name:</label>
-            <input type="text" id="name" name="name" style="width: 90%; padding: 10px; font-size: 16px; border-radius: 15px">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
         </div>
     
-        <div style="margin-bottom: 20px;">
-            <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Email:</label>
-            <input type="email" id="email" name="email" style="width: 90%; padding: 10px; font-size: 16px; border-radius: 15px">
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
         </div>
     
-        <div style="margin-bottom: 20px;">
-            <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password:</label>
-            <input type="password" id="password" name="password" style="width: 90%; padding: 10px; font-size: 16px; border-radius: 15px">
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
         </div>
     
-        <input type="submit" value="Register" style="display: inline-block; padding: 10px 20px; font-size: 16px; text-align: center; text-decoration: none; border-radius: 4px; cursor: pointer; background-color: #337ab7; color: #fff; border: none; width: 50%; right: 50px">
-    </form>
+        <input type="submit" value="Register">
+</body>
+</html>
 {% endblock %}

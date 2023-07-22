@@ -27,7 +27,7 @@ class HealthDetails(models.Model):
     age = models.IntegerField()
     pregnancies = models.IntegerField()
     glucose = models.IntegerField()
-    blood_sugar = models.IntegerField()
+    blood_pressure = models.IntegerField()
     skin_thickness = models.IntegerField()
     insulin = models.IntegerField()
     bmi = models.IntegerField()

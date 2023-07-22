@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pickle
-from .models import User
+from .models import User, HealthDetails
 
 
 # Create your views here.
@@ -48,6 +48,41 @@ def register(request):
 
     return render(request,"myapp/registration_form copy.html", {
         "name":logged_in_user.name    })
+
+def update_health_details(request):
+    # if request.session['user_id'] is None:
+    #     return HttpResponse("Please log in first to update the details")
+
+    if request.method=="POST":    
+        Age = int(request.POST.get('Age'))
+        Pregnancies = int(request.POST.get('Pregnancies'))
+        Glucose = int(request.POST.get('Glucose'))
+        BloodPressure = int(request.POST.get('BloodPressure'))
+        SkinThickness = int(request.POST.get('SkinThickness'))
+        Insulin = int(request.POST.get('Insulin'))
+        BMI = int(request.POST.get('BMI'))
+        DiabetesPedigreeFunction = int(request.POST.get('DiabetesPedigreeFunction'))
+
+        user_logged_in_id = request.session['user_id']
+        user_logged_in = User.objects.get(pk=user_logged_in_id)
+        health_details = HealthDetails(
+            user = user_logged_in,
+            age = Age,
+            pregnancies = Pregnancies,
+            glucose = Glucose,
+            blood_pressure = BloodPressure,
+            skin_thickness = SkinThickness,
+            insulin = Insulin,
+            bmi = BMI,
+            diabetes_pedigree_function = DiabetesPedigreeFunction,
+            is_diabetic = 0
+        )
+
+        health_details.save()
+
+        return HttpResponse("User details saved")
+        
+    return render(request, "myapp/update_health_details.html")
 
 def login(request):
     error_message = None

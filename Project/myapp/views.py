@@ -42,12 +42,14 @@ def register(request):
         a = User(age=age, gender=gender, name=name, email=email, password=password)
         a.save()
 
-    print("Logged in user ID is ")
-    print(request.session['user_id'])
-    logged_in_user = User.objects.get(id=request.session['user_id'])
+    if 'user_id' in request.session:
+        print("Logged in user ID is ")
+        print(request.session['user_id'])
+        logged_in_user = User.objects.get(id=request.session['user_id'])
 
-    return render(request,"myapp/registration_form.html", {
-        "name":logged_in_user.name    })
+        return render(request,"myapp/registration_form.html", {
+            "name":logged_in_user.name    })
+    return render(request, "myapp/registration_form.html")
 
 def update_health_details(request):
     # if request.session['user_id'] is None:

@@ -1,13 +1,6 @@
+{% extends 'myapp/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
-</head>
-<body>
+{% block content %}
     <p>Hi! Welcome to OptiPro. Please put your symptoms in the box below</p>
     <form method = 'post' action = "{% url 'submit_form' %}" >
         {% csrf_token %}
@@ -23,5 +16,4 @@
 
         <input type = "submit" value = "Submit" >
     </form>
-</body>
-</html>
+{% endblock %}

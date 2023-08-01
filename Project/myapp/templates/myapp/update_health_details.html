@@ -1,43 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'myapp/base.html' %}
+
+{% block content %}
 <body>
-    <form method = 'POST' action = "{% url 'update_health_details' %}" >
+    <form method = 'POST' action = "{% url 'update_health_details' %}" class="login-form">
         {% csrf_token %}
 
         <label for="Age">Age</label>
-      <input type="text" id="Age" name="Age" /><br /><br />
+      <input type="text" id="Age" name="Age" class="form-input"/><br /><br />
 
       <label for="Pregnancies">Pregnancies</label>
-      <input type="text" id="Pregnancies" name="Pregnancies" /><br /><br />
+      <input type="text" id="Pregnancies" name="Pregnancies" class="form-input"/><br /><br />
 
       <label for="Glucose">Glucose</label>
-      <input type="text" id="Glucose" name="Glucose" /><br /><br />
+      <input type="text" id="Glucose" name="Glucose" class="form-input"/><br /><br />
 
       <label for="BloodPressure">BloodPressure</label>
-      <input type="text" id="BloodPressure" name="BloodPressure" /><br /><br />
+      <input type="text" id="BloodPressure" name="BloodPressure" class="form-input"/><br /><br />
 
       <label for="SkinThickness">SkinThickness</label>
-      <input type="text" id="SkinThickness" name="SkinThickness" /><br /><br />
+      <input type="text" id="SkinThickness" name="SkinThickness" class="form-input"/><br /><br />
 
       <label for="Insulin">Insulin</label>
-      <input type="text" id="Insulin" name="Insulin" /><br /><br />
+      <input type="text" id="Insulin" name="Insulin" class="form-input"/><br /><br />
 
       <label for="BMI">BMI</label>
-      <input type="text" id="BMI" name="BMI" /><br /><br />
+      <input type="text" id="BMI" name="BMI" class="form-input"/><br /><br />
 
       <label for="DiabetesPedigreeFunction">DiabetesPedigreeFunction</label>
       <input
         type="text"
         id="DiabetesPedigreeFunction"
         name="DiabetesPedigreeFunction"
+        class="form-input"
       /><br /><br />
 
       <input type="submit" value="Save Details" />
     </form>
 </body>
-</html>
+{% endblock %}

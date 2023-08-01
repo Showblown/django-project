@@ -1,26 +1,28 @@
-form {
+.registration-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     background-color: #b3b3b3;
 }
 
-label {
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+.form-input {
     width: 90%;
     padding: 10px;
     font-size: 16px;
     border-radius: 15px;
 }
 
-input[type="submit"] {
+.form-submit {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;

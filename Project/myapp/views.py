@@ -46,7 +46,7 @@ def register(request):
     print(request.session['user_id'])
     logged_in_user = User.objects.get(id=request.session['user_id'])
 
-    return render(request,"myapp/registration_form copy.html", {
+    return render(request,"myapp/registration_form.html", {
         "name":logged_in_user.name    })
 
 def update_health_details(request):

@@ -74,11 +74,11 @@ student1.update_marks("Math", 85)
 student1.update_marks("Science", 92)
 	
 	# calculate average marks
-	average_marks = student1.calculate_average_marks()
+average_marks = student1.calculate_average_marks()
 	
 	# display student information
-	student1.display_info()
-	print(f"Average Marks: {average_marks}")
+student1.display_info()
+print(f"Average Marks: {average_marks}")
 
 #how do you read a csv file in python
 #import pandas as pd

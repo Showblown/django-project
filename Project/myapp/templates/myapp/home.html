@@ -2,18 +2,4 @@
 
 {% block content %}
     <p>Hi! Welcome to OptiPro. Please put your symptoms in the box below</p>
-    <form method = 'post' action = "{% url 'submit_form' %}" >
-        {% csrf_token %}
-        <label for="symptoms">
-            Symptoms:
-        </label>
-        <input type="text" id="age" name="age" ><br><br>
-
-        <label for="gender">
-            Gender: 
-        </label>
-        <input type="text" id="gender" name="gender" ><br><br>
-
-        <input type = "submit" value = "Submit" >
-    </form>
 {% endblock %}

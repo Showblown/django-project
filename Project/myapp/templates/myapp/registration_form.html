@@ -3,8 +3,8 @@
     {% block content %} 
     <link rel="stylesheet" href="{% static 'css/registration_form.css' %}">
 
-        {% csrf_token %}
     <form method="post" action="{% url 'register' %}" class="registration-form">
+        {% csrf_token %}
         <div class="form-bg">
             <label for="age">Age:</label>
             <input type="text" id="age" name="age" class="form-input">

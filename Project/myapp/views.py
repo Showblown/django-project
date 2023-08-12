@@ -15,9 +15,14 @@ def register(request):
         gender = request.POST.get('gender')
         name = request.POST.get('name')
         email = request.POST.get('email')
+        existing_user = User.objects.get(email=email)
         password = request.POST.get('password')
         a = User(age=age, gender=gender, name=name, email=email, password=password)
-        a.save()
+        if existing_user is None:
+            a.save()
+        else:
+            return HttpResponse("User already exists with this email!")
+        
 
     if 'user_id' in request.session:
         logged_in_user = User.objects.get(id=request.session['user_id'])

@@ -1,47 +1,65 @@
 {% extends 'myapp/base.html' %}
-
-{% block content %}
+{% load static %}
+    {% block content %} 
+    <link rel="stylesheet" href="{% static 'css/registration_form.css' %}">
     <form method = 'post' action = "{% url 'predict_diabetes' %}" >
         {% csrf_token %}
-        <label for="Age">
-            Age
-        </label>
-        <input type="text" id="Age" name="Age" ><br><br>
 
-        <label for="Pregnancies">
-            Pregnancies
+        <div class="form-group">
+        <label for="age">
+            age
         </label>
-        <input type="text" id="Pregnancies" name="Pregnancies" ><br><br>
+        <input type="text" id="age" name="age"  class="form-input"><br><br>
+        </div>
+
+        <div class="form-group">
+        <label for="pregnancies">
+            pregnancies
+        </label>
+        <input type="text" id="pregnancies" name="pregnancies"  class="form-input"><br><br>
+        </div>
         
-        <label for="Glucose">
-            Glucose
+        <div class="form-group">
+        <label for="glucose">
+            glucose
         </label>
-        <input type="text" id="Glucose" name="Glucose" ><br><br>
+        <input type="text" id="glucose" name="glucose"  class="form-input"><br><br>
+        </div>
         
-        <label for="BloodPressure">
-            BloodPressure
+        <div class="form-group">
+        <label for="bloodPressure">
+            bloodPressure
         </label>
-        <input type="text" id="BloodPressure" name="BloodPressure" ><br><br>
+        <input type="text" id="bloodPressure" name="bloodPressure"  class="form-input"><br><br>
+        </div>
 
-        <label for="SkinThickness">
-            SkinThickness
+        <div class="form-group">
+        <label for="skinThickness">
+            skinThickness
         </label>
-        <input type="text" id="SkinThickness" name="SkinThickness" ><br><br>
+        <input type="text" id="skinThickness" name="skinThickness"  class="form-input"><br><br>
+        </div>
 
-        <label for="Insulin">
-            Insulin
+        <div class="form-group">
+        <label for="insulin">
+            insulin
         </label>
-        <input type="text" id="Insulin" name="Insulin" ><br><br>
+        <input type="text" id="insulin" name="insulin"  class="form-input"><br><br>
+        </div>
 
-        <label for="BMI">
-            BMI
+        <div class="form-group">
+        <label for="bmi">
+            bmi
         </label>
-        <input type="text" id="BMI" name="BMI" ><br><br>
+        <input type="text" id="bmi" name="bmi"  class="form-input"><br><br>
+        </div>
 
-        <label for="DiabetesPedigreeFunction">
-            DiabetesPedigreeFunction
+        <div class="form-group">
+        <label for="diabetesPedigreeFunction">
+            diabetesPedigreeFunction
         </label>
-        <input type="text" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" ><br><br>
+        <input type="text" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction"  class="form-input"><br><br>
+        
         
         <input type = "submit" value = "Submit" >
     </form>

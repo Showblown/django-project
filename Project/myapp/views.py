@@ -107,10 +107,10 @@ def predict_diabetes(request):
         insulin = int(request.POST.get('insulin'))
         bmi = int(request.POST.get('bmi'))
         diabetesPedigreeFunction = int(request.POST.get('diabetesPedigreeFunction'))
-
         inputdata = [pregnancies, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunction, age]
 
-        with open("diabetes_model.pickle", "rb") as f:
+        with open("myapp/diabetes_model.pickle", "rb") as f:
+
             diamodel = pickle.load(f)
 
         diaoutcome = diamodel.predict([inputdata])

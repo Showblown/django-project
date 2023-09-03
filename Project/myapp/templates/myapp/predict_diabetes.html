@@ -2,9 +2,9 @@
 {% load static %}
     {% block content %} 
     <link rel="stylesheet" href="{% static 'css/registration_form.css' %}">
-    <form method = 'post' action = "{% url 'predict_diabetes' %}" >
-        {% csrf_token %}
 
+    <form method = 'post' action = "{% url 'predict_diabetes'%}" class="registration-form">
+        {% csrf_token %}
         <div class="form-group">
         <label for="age">
             age
@@ -63,4 +63,5 @@
         
         <input type = "submit" value = "Submit" >
     </form>
+</div>
 {% endblock %}

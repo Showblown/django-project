@@ -11,13 +11,23 @@ def diabetes(request):
 
 def register(request):
     if request.method == "POST":
-        age = int(request.POST.get('age'))
-        gender = request.POST.get('gender')
+        user_type = request.POST.get('user_type')
         name = request.POST.get('name')
         email = request.POST.get('email')
-        existing_user = User.objects.get(email=email)
         password = request.POST.get('password')
-        a = User(age=age, gender=gender, name=name, email=email, password=password)
+
+        if user_type == 'doctor':
+            specialization = request.POST.get('specialization')
+            doctor = Doctor(name = name, email = email, password = password, specialization = specialization)
+
+            doctor.save()
+
+        else:
+            age = int(request.POST.get('age'))
+            gender_value = request.POST.get('gender')
+
+            user = User(age=age, gender=gender_value, name=name, email=email, password=password)
+            
         if existing_user is None:
             a.save()
         else:

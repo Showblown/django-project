@@ -33,3 +33,11 @@ class HealthDetails(models.Model):
     bmi = models.IntegerField()
     diabetes_pedigree_function = models.IntegerField()
     is_diabetic = models.IntegerField()
+
+class Doctor(models.Model):
+    name = models.CharField(max_length = 100)
+    gender = models.CharField(max_length=6)
+    email = models.CharField(max_length = 30)
+    password = models.CharField(max_length = 30)
+    years_of_experience = models.IntegerField()
+    specialization = models.CharField(max_length=200)

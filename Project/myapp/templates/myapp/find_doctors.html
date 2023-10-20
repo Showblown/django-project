@@ -1,0 +1,9 @@
+{% extends 'myapp/base.html' %}
+    {% load static %}
+    {% block content %} 
+    <h1>Find Doctors</h1>
+    <form method="post" action="{% url 'find_doctors' %}" class="registration-form">
+        {% csrf_token %}
+        <input type="submit" value="Register" class="form-submit">
+    </form>
+    {% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pickle
-from .models import User, HealthDetails
+from .models import User, HealthDetails, Doctor
 
 def home(request):
     return render(request, "myapp/home.html")
@@ -20,18 +20,25 @@ def register(request):
             specialization = request.POST.get('specialization')
             doctor = Doctor(name = name, email = email, password = password, specialization = specialization)
 
-            doctor.save()
+            existing_doctor = Doctor.objects.get(email = email)
+            
+            if existing_doctor is None:
+                doctor.save()
+            else:
+                return HttpResponse("A Doctor already exists with this email!")
 
         else:
             age = int(request.POST.get('age'))
             gender_value = request.POST.get('gender')
 
             user = User(age=age, gender=gender_value, name=name, email=email, password=password)
+
+            existing_user = User.objects.get(email = email)
             
-        if existing_user is None:
-            a.save()
-        else:
-            return HttpResponse("User already exists with this email!")
+            if existing_user is None:
+                user.save()
+            else:
+                return HttpResponse("User already exists with this email!")
         
 
     if 'user_id' in request.session:
@@ -75,6 +82,8 @@ def update_health_details(request):
 
     return render(request, "myapp/update_health_details.html")
 
+def find_doctors(request):
+    pass
 
 def login(request):
     error_message = None

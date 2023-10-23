@@ -41,3 +41,4 @@ class Doctor(models.Model):
     password = models.CharField(max_length = 30)
     years_of_experience = models.IntegerField()
     specialization = models.CharField(max_length=200)
+    rating = models.FloatField()

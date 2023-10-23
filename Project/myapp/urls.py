@@ -11,4 +11,6 @@ urlpatterns=[
     path('logout/', logout, name='logout'),
     path('update_health_details', update_health_details, name = 'update_health_details'),
     path('find_doctors', find_doctors, name = 'find_doctors')
+
 ]
+#google.com/id=2&name=abc

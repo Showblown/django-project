@@ -18,7 +18,8 @@ def register(request):
 
         if user_type == 'doctor':
             specialization = request.POST.get('specialization')
-            doctor = Doctor(name = name, email = email, password = password, specialization = specialization)
+            years_of_experience = request.POST.get('years_of_experience')
+            doctor = Doctor(name = name, email = email, password = password, specialization = specialization, years_of_experience = years_of_experience, rating = 5)
 
             existing_doctor = Doctor.objects.get(email = email)
             
